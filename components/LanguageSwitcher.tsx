@@ -1,6 +1,7 @@
 "use client";
 import {useLocale, useTranslations} from 'next-intl';
 import {usePathname, useRouter} from 'next/navigation';
+import type {Route} from 'next';
 import {useTransition} from 'react';
 
 export default function LanguageSwitcher() {
@@ -12,11 +13,14 @@ export default function LanguageSwitcher() {
 
   function onToggle() {
     const newLocale = locale === 'ar' ? 'en' : 'ar';
-    const segments = pathname?.split('/') ?? [];
+    const segments = (pathname ?? '/').split('/');
     if (segments.length > 1) {
       segments[1] = newLocale;
     }
-    startTransition(() => router.push(segments.join('/') || `/${newLocale}`));
+    let target = segments.join('/') || `/${newLocale}`;
+    if (!target.startsWith('/')) target = `/${target}`;
+    // Satisfy Next.js typedRoutes by asserting the constructed path as Route
+    startTransition(() => router.push(target as Route));
   }
 
   return (
