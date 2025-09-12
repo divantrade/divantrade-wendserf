@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Trade. Supply. Trust.",
+    "subtitle": "Since 1991, Divan Trade has helped global businesses source products, manage international supply, and move goods across borders with confidence.",
+    "cta": "Talk to us"
+  },
+  "about": {
+    "title": "About Divan Trade",
+    "content": "Founded in 1991, Divan Trade specializes in product sourcing and international trade operations between Turkey, China and the Kingdom of Saudi Arabia. With offices in Istanbul, Guangzhou and Al-Madinah Al-Munawarah, we support clients end-to-end from supplier discovery to after-sales support."
+  },
+  "services": {
+    "title": "Our Services",
+    "all": "All Services",
+    "list": [
+      {
+        "title": "Product Sourcing",
+        "items": [
+          "Find trusted suppliers in Turkey and China",
+          "Compare price, quality and capacity",
+          "Analytical reports with best-fit options",
+          "Initial negotiations on behalf of the client"
+        ]
+      },
+      {
+        "title": "Supply & Trade",
+        "items": [
+          "Purchase goods on behalf of the client",
+          "Contracts and secure payments",
+          "Production and factory follow-up",
+          "Coordination with shipping companies (with DVN Logistics)"
+        ]
+      },
+      {
+        "title": "Customs Clearance",
+        "items": [
+          "Prepare all required documents",
+          "Handle destination customs authorities",
+          "Minimize risks and penalties"
+        ]
+      },
+      {
+        "title": "Inspection & Quality Assurance",
+        "items": [
+          "Sample or pre-shipment production checks",
+          "Final pre-shipment inspection",
+          "Photo and video reporting"
+        ]
+      },
+      {
+        "title": "Consulting Services",
+        "items": [
+          "Feasibility studies for imports",
+          "Full import cost analysis",
+          "Legal and commercial advisory"
+        ]
+      },
+      {
+        "title": "B2B Solutions",
+        "items": [
+          "Long-term partnerships",
+          "Reliable supply lines",
+          "Sector-specific solutions (Apparel, Food, Electronics, etc.)"
+        ]
+      },
+      {
+        "title": "After-Sales Support",
+        "items": [
+          "Client satisfaction follow-up",
+          "Resolve supplier issues",
+          "Regular updates on new products"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Tell us what you need to source or ship. Our team will get back within 1 business day.",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "success": "Thank you! We will contact you soon.",
+    "error": "Something went wrong. Please try again later."
+  },
+  "offices": {
+    "title": "Our Offices",
+    "istanbul": "Istanbul, Turkey",
+    "guangzhou": "Guangzhou, China",
+    "madinah": "Al-Madinah Al-Munawarah, KSA"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
