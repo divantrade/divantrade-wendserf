@@ -1,14 +1,17 @@
 "use client";
 import clsx from 'classnames';
+import Image from 'next/image';
 
 export default function PageHero({
   title,
   subtitle,
-  align = 'start'
+  align = 'start',
+  imageSrc
 }: {
   title: string;
   subtitle?: string;
   align?: 'start' | 'center' | 'end';
+  imageSrc?: string;
 }) {
   const alignment = {
     start: 'items-start text-left',
@@ -17,12 +20,27 @@ export default function PageHero({
   }[align];
 
   return (
-    <section className="relative overflow-hidden rounded-xl bg-gradient-to-br from-brand via-brand-light to-brand-accent text-white">
-      <div className="container-page py-10 md:py-14">
+    <section className="relative overflow-hidden rounded-xl text-white">
+      {imageSrc ? (
+        <>
+          <Image
+            src={imageSrc}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60" />
+        </>
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-brand-accent" />
+      )}
+      <div className="relative container-page py-10 md:py-14">
         <div className={clsx('flex flex-col gap-3', alignment)}>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">{title}</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight drop-shadow">{title}</h1>
           {subtitle && (
-            <p className="text-white/90 text-base md:text-lg max-w-3xl leading-relaxed">{subtitle}</p>
+            <p className="text-white/95 text-base md:text-lg max-w-3xl leading-relaxed drop-shadow">{subtitle}</p>
           )}
         </div>
       </div>
