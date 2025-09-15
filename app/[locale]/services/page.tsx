@@ -45,7 +45,7 @@ export default async function ServicesPage({
     <div className="space-y-8">
       <PageHero
         title={t('title')}
-        imageSrc="/images/services/logistics-concept-wooden-block-desk-with-logistics-icon-virtual-screen.jpg"
+        imageSrc="/images/services/business-woman-start-up-small-business-entrepreneur-sme-success-freelance-woman-working-home-with-online-parcel-delivery-sme-packaging-deliveryconcept (4).jpg"
         overlay="brand"
         height="lg"
       />
