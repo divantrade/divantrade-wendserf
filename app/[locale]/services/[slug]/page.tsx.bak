@@ -1,0 +1,55 @@
+import {createTranslator} from 'next-intl';
+import {notFound} from 'next/navigation';
+import PageHero from '@/components/PageHero';
+import en from '@/messages/en.json';
+import ar from '@/messages/ar.json';
+
+type Locale = 'en' | 'ar';
+
+function toArray<T = any>(v: unknown): T[] {
+  if (Array.isArray(v)) return v as T[];
+  if (v && typeof v === 'object') return Object.values(v as Record<string, T>);
+  return [];
+}
+
+export default async function ServiceDetailPage({
+  params
+}: {
+  params: {locale: Locale; slug: string};
+}) {
+  const locale: Locale = params?.locale === 'ar' ? 'ar' : 'en';
+  const messages = locale === 'ar' ? (ar as any) : (en as any);
+  const t = createTranslator({locale, messages, namespace: 'services'});
+
+  const listRaw = (() => {
+    try {
+      return t.raw('list');
+    } catch {
+      return [];
+    }
+  })();
+
+  const list = toArray<any>(listRaw);
+  const svc = list.find((s) => String(s?.slug ?? '') === String(params.slug));
+
+  if (!svc) {
+    notFound();
+  }
+
+  const title = String(
+    svc?.title ?? (locale === 'ar' ? 'تفاصيل الخدمة' : 'Service Details')
+  );
+
+  return (
+    <div className="space-y-8">
+      <PageHero title={title} imageSrc="/images/services/b2b-symbol.jpg" />
+      <article className="prose max-w-none dark:prose-invert">
+        <ul className="list-disc ps-6">
+          {toArray<string>(svc?.items).map((it, i) => (
+            <li key={i}>{String(it)}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  );
+}

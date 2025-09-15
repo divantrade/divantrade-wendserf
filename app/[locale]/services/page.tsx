@@ -1,24 +1,60 @@
-import {getTranslations} from 'next-intl/server';
-import ServiceCard from '@/components/ServiceCard';
+import {createTranslator} from 'next-intl';
 import PageHero from '@/components/PageHero';
+import ServiceCard from '@/components/ServiceCard';
+import en from '@/messages/en.json';
+import ar from '@/messages/ar.json';
+
+type Locale = 'en' | 'ar';
+
+// يحوّل أي قيمة إلى Array آمنة للاستخدام مع map
+function toArray<T = any>(v: unknown): T[] {
+  if (Array.isArray(v)) return v as T[];
+  if (v && typeof v === 'object') return Object.values(v as Record<string, T>);
+  return [];
+}
 
 export default async function ServicesPage({
   params
 }: {
-  params: {locale: 'en' | 'ar'};
+  params: {locale: Locale};
 }) {
-  const t = await getTranslations({locale: params.locale, namespace: 'services'});
-  const services = t.raw('list') as Array<{title: string; items: string[]}>;
+  const locale: Locale = params?.locale === 'ar' ? 'ar' : 'en';
+  const messages = locale === 'ar' ? (ar as any) : (en as any);
+
+  const t = createTranslator({locale, messages, namespace: 'services'});
+
+  const title = (() => {
+    try {
+      return t('title');
+    } catch {
+      return locale === 'ar' ? 'خدماتنا' : 'Our Services';
+    }
+  })();
+
+  const rawList = (() => {
+    try {
+      return t.raw('list');
+    } catch {
+      return [];
+    }
+  })();
+
+  const services = toArray(rawList);
+
   return (
     <div className="space-y-8">
       <PageHero
-        title={t('title')}
+        title={title}
         imageSrc="/images/services/business-logistic-import-export-transport-industry-transportation-logistic-network-distribution-growth-container-cargo-ship-trucks-industrial-cargo-freight-shipping.jpg"
       />
       <section>
         <div className="grid gap-6 md:grid-cols-2">
-          {services.map((svc, idx) => (
-            <ServiceCard key={idx} title={svc.title} items={svc.items} />
+          {services.map((svc: any, idx: number) => (
+            <ServiceCard
+              key={idx}
+              title={String(svc?.title ?? (locale === 'ar' ? 'خدمة' : 'Service'))}
+              items={Array.isArray(svc?.items) ? svc.items : toArray(svc?.items)}
+            />
           ))}
         </div>
       </section>
