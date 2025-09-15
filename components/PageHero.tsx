@@ -38,6 +38,7 @@ export default function PageHero({
             priority
             className="object-cover"
             sizes="100vw"
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60" />
         </>

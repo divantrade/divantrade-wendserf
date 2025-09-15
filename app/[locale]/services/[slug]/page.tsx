@@ -31,7 +31,7 @@ export default async function ServiceDetailPage({params}: {params: {locale: stri
         </div>
         {images?.detail && (
           <div className="mb-6 relative w-full aspect-[16/9] overflow-hidden rounded-lg">
-            <Image src={images.detail} alt="" fill className="object-cover" sizes="100vw" />
+            <Image src={images.detail} alt="" fill className="object-cover" sizes="100vw" unoptimized />
           </div>
         )}
         <ul className="list-disc ps-6 text-slate-700 space-y-1">
