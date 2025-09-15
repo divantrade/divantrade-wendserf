@@ -19,7 +19,6 @@ export default function LanguageSwitcher() {
     }
     let target = segments.join('/') || `/${newLocale}`;
     if (!target.startsWith('/')) target = `/${target}`;
-    // Satisfy Next.js typedRoutes by asserting the constructed path as Route
     startTransition(() => router.push(target as Route));
   }
 
