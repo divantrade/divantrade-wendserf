@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description:
     'Divan Trade – Product sourcing, international supply, customs clearance, inspection, consulting, B2B solutions, and after-sales support.',
   metadataBase: new URL('https://divantrade.net'),
-  icons: {
-    icon: '/favicon.svg'
-  },
   openGraph: {
     title: 'Divan Trade',
     description:
