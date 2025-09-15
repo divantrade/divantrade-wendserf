@@ -7,13 +7,17 @@ export default function PageHero({
   subtitle,
   align = 'start',
   imageSrc,
-  height = 'md'
+  height = 'md',
+  overlay = 'black',
+  unoptimized
 }: {
   title: string;
   subtitle?: string;
   align?: 'start' | 'center' | 'end';
   imageSrc?: string;
   height?: 'sm' | 'md' | 'lg';
+  overlay?: 'black' | 'brand';
+  unoptimized?: boolean;
 }) {
   const alignment = {
     start: 'items-start text-left',
@@ -27,6 +31,11 @@ export default function PageHero({
     lg: 'min-h-72 md:min-h-96'
   }[height];
 
+  const overlayClass =
+    overlay === 'brand'
+      ? 'absolute inset-0 bg-gradient-to-br from-brand/80 via-brand-light/60 to-brand-accent/80'
+      : 'absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60';
+
   return (
     <section className={clsx('relative overflow-hidden rounded-xl text-white', minHeight)}>
       {imageSrc ? (
@@ -38,9 +47,9 @@ export default function PageHero({
             priority
             className="object-cover"
             sizes="100vw"
-            unoptimized
+            unoptimized={unoptimized ?? true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60" />
+          <div className={overlayClass} />
         </>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-brand-accent" />

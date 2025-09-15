@@ -44,8 +44,10 @@ export default async function ServicesPage({
   return (
     <div className="space-y-8">
       <PageHero
-        title={title}
-        imageSrc="/images/services/business-logistic-import-export-transport-industry-transportation-logistic-network-distribution-growth-container-cargo-ship-trucks-industrial-cargo-freight-shipping.jpg"
+        title={t('title')}
+        imageSrc="/images/services/logistics-concept-wooden-block-desk-with-logistics-icon-virtual-screen.jpg"
+        overlay="brand"
+        height="lg"
       />
       <section>
         <div className="grid gap-6 md:grid-cols-2">
