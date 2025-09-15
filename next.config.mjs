@@ -1,13 +1,17 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
     typedRoutes: true,
-    // 👇 إجبار تضمين ملف next-intl.config.ts داخل باينري السيرفر على Vercel
+    // نضمن تضمين ملف الكونفِج داخل باينري السيرفر
     outputFileTracingIncludes: {
-      '/(.*)': ['./next-intl.config.ts']
+      '/(.*)': ['./next-intl.config.mjs']
     }
   }
 };
 
-export default nextConfig;
+// لفّ إعدادات Next بالبلَجن
+const withNextIntl = createNextIntlPlugin(); // لا نمرّر request.ts لأننا لا نستخدمه
+export default withNextIntl(nextConfig);
