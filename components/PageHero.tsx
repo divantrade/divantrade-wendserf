@@ -6,12 +6,14 @@ export default function PageHero({
   title,
   subtitle,
   align = 'start',
-  imageSrc
+  imageSrc,
+  height = 'md'
 }: {
   title: string;
   subtitle?: string;
   align?: 'start' | 'center' | 'end';
   imageSrc?: string;
+  height?: 'sm' | 'md' | 'lg';
 }) {
   const alignment = {
     start: 'items-start text-left',
@@ -19,8 +21,14 @@ export default function PageHero({
     end: 'items-end text-right'
   }[align];
 
+  const minHeight = {
+    sm: 'min-h-48',
+    md: 'min-h-60 md:min-h-72',
+    lg: 'min-h-72 md:min-h-96'
+  }[height];
+
   return (
-    <section className="relative overflow-hidden rounded-xl text-white">
+    <section className={clsx('relative overflow-hidden rounded-xl text-white', minHeight)}>
       {imageSrc ? (
         <>
           <Image
@@ -36,8 +44,8 @@ export default function PageHero({
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-light to-brand-accent" />
       )}
-      <div className="relative container-page py-10 md:py-14">
-        <div className={clsx('flex flex-col gap-3', alignment)}>
+      <div className="relative container-page h-full py-10 md:py-14">
+        <div className={clsx('flex h-full flex-col justify-center gap-3', alignment)}>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight drop-shadow">{title}</h1>
           {subtitle && (
             <p className="text-white/95 text-base md:text-lg max-w-3xl leading-relaxed drop-shadow">{subtitle}</p>

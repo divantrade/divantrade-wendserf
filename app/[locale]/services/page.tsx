@@ -1,10 +1,9 @@
-"use client";
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 import ServiceCard from '@/components/ServiceCard';
 import PageHero from '@/components/PageHero';
 
-export default function ServicesPage() {
-  const t = useTranslations('services');
+export default async function ServicesPage() {
+  const t = await getTranslations('services');
   const services = t.raw('list') as Array<{title: string; items: string[]}>;
   return (
     <div className="space-y-8">

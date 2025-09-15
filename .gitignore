@@ -3,3 +3,8 @@ node_modules
 out
 .DS_Store
 .env*
+public/images_opt/
+public/images_RAW_*/
+*.psd
+*.tif
+*.webp
