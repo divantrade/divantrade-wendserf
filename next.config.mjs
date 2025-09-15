@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    typedRoutes: true
+    typedRoutes: true,
+    // 👇 إجبار تضمين ملف next-intl.config.ts داخل باينري السيرفر على Vercel
+    outputFileTracingIncludes: {
+      '/(.*)': ['./next-intl.config.ts']
+    }
   }
 };
 
