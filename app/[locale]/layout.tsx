@@ -4,6 +4,8 @@ import Providers from '@/components/Providers';
 import { Cairo, Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import en from '@/messages/en.json';
+import ar from '@/messages/ar.json';
 
 const inter = Inter({ subsets: ['latin'] });
 const cairo = Cairo({ subsets: ['arabic'], weight: ['300', '400', '600', '700'] });
@@ -35,7 +37,8 @@ export default async function LocaleLayout({
   params: { locale: 'en' | 'ar' };
 }) {
   const locale = params.locale || 'en';
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const DICTS: Record<string, any> = { en, ar };
+  const messages = DICTS[locale] ?? en;
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const fontClass = locale === 'ar' ? cairo.className : inter.className;
 

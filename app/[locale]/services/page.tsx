@@ -2,8 +2,12 @@ import {getTranslations} from 'next-intl/server';
 import ServiceCard from '@/components/ServiceCard';
 import PageHero from '@/components/PageHero';
 
-export default async function ServicesPage() {
-  const t = await getTranslations('services');
+export default async function ServicesPage({
+  params
+}: {
+  params: {locale: 'en' | 'ar'};
+}) {
+  const t = await getTranslations({locale: params.locale, namespace: 'services'});
   const services = t.raw('list') as Array<{title: string; items: string[]}>;
   return (
     <div className="space-y-8">

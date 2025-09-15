@@ -6,14 +6,15 @@ import {SERVICE_IMAGES} from '@/lib/services';
 import {getTranslations} from 'next-intl/server';
 
 export default async function ServiceDetailPage({params}: {params: {locale: string; slug: string}}) {
-  const t = await getTranslations({locale: params.locale});
+  const t = await getTranslations({locale: params.locale, namespace: 'services'});
+  const tNav = await getTranslations({locale: params.locale, namespace: 'nav'});
   const service = SERVICES.find((s) => s.slug === params.slug);
 
   if (!service) {
     return (
       <div className="space-y-4">
         <p className="text-slate-700">Service not found.</p>
-        <Link href={`/${params.locale}/services`} className="text-brand underline">← {t('nav.services')}</Link>
+        <Link href={`/${params.locale}/services`} className="text-brand underline">← {tNav('services')}</Link>
       </div>
     );
   }
@@ -27,7 +28,7 @@ export default async function ServiceDetailPage({params}: {params: {locale: stri
       <PageHero title={title} imageSrc={images?.hero} />
       <article className="prose max-w-none">
         <div className="mb-6">
-          <Link href={`/${params.locale}/services`} className="text-brand">← {t('nav.services')}</Link>
+          <Link href={`/${params.locale}/services`} className="text-brand">← {tNav('services')}</Link>
         </div>
         {images?.detail && (
           <div className="mb-6 relative w-full aspect-[16/9] overflow-hidden rounded-lg">
