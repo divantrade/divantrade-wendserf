@@ -9,3 +9,5 @@ public/images_RAW_*/
 *.tif
 *.webp
 !public/images/*.webp
+!public/images/*.webp
+!public/images/**/*.webp
