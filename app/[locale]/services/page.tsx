@@ -45,7 +45,7 @@ export default async function ServicesPage({
     <div className="space-y-8">
       <PageHero
         title={t('title')}
-        imageSrc="/images/services/Our%20Services.webp?v=1"
+        imageSrc="/images/services/Our%20Services.webp?v=3"
         overlay="brand"
         height="lg"
       />
