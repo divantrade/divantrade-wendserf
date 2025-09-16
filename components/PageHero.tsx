@@ -33,7 +33,7 @@ export default function PageHero({
 
   const overlayClass =
     overlay === 'brand'
-      ? 'absolute inset-0 bg-gradient-to-br from-brand/80 via-brand-light/60 to-brand-accent/80'
+      ? 'absolute inset-0 bg-gradient-to-br from-brand/50 via-brand-light/30 to-brand-accent/50'
       : 'absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60';
 
   return (
